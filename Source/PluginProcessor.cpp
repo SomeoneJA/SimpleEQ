@@ -109,9 +109,11 @@ void SimpleEQAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
                                                                                 chainSettings.peakFreq, 
                                                                                 chainSettings.peakQuality, 
                                                                                 juce::Decibels::decibelsToGain(chainSettings.peakGainInDecibels));
-    leftChain.get<ChainPositions::Peak>().coefficients = *peakCoeffitients;
-    rightChain.get<ChainPositions::Peak>().coefficients = *peakCoeffitients;
-    //auto lowFilterCoeffitients = juce::dsp::IIR::Coefficients<float>::makeLowPass
+    *leftChain.get<ChainPositions::Peak>().coefficients = *peakCoeffitients;
+    *rightChain.get<ChainPositions::Peak>().coefficients = *peakCoeffitients;
+
+
+    
 }
 
 void SimpleEQAudioProcessor::releaseResources()
